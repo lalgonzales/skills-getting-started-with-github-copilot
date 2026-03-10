@@ -21,6 +21,12 @@ A super simple FastAPI application that allows students to view and sign up for 
    python app.py
    ```
 
+   > **Note:** The API sets `Cache-Control: no-store` on the
+   > `/activities` endpoint so browsers always fetch the latest activity
+   > data. The frontend also requests this endpoint with `cache: "no-store"`
+   > which prevents stale content; you should see participant lists update
+   > immediately after signing up.
+
 3. Open your browser and go to:
    - API documentation: http://localhost:8000/docs
    - Alternative documentation: http://localhost:8000/redoc
@@ -31,6 +37,7 @@ A super simple FastAPI application that allows students to view and sign up for 
 | ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
 | GET    | `/activities`                                                     | Get all activities with their details and current participant count |
 | POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
+| DELETE | `/activities/{activity_name}/signup?email=student@mergington.edu` | Unregister a student from an activity                               |
 
 ## Data Model
 
